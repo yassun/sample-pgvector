@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  host: postgres
+  port: 5432
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: pgvector_dev
+
+test:
+  <<: *default
+  database: pgvector_test
+
+production:
+  <<: *default
+  host: <%= ENV['DATABASE_HOST'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
