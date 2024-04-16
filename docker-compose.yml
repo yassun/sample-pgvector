@@ -20,5 +20,15 @@ services:
     tty: true
     depends_on:
       - postgres
+  flask:
+    build:
+      context: ./flask/
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    container_name: flask
+    volumes:
+      - ./flask:/usr/src/app
+    command: flask run --host=0.0.0.0
 volumes:
   postgres_volume:
