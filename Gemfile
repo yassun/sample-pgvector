@@ -44,6 +44,8 @@ gem "bootsnap", require: false
 
 gem "neighbor"
 
+gem 'httpclient'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

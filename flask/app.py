@@ -9,6 +9,7 @@ def index():
 
 @app.route('/api/embeddings', methods=['POST'])
 def api_embeddings():
-    sentences = request.form["data"]
-    embeddings = SentenceTransformer('intfloat/multilingual-e5-large').encode(sentences)
+    content = request.json
+    sentences = content["data"]
+    embeddings = SentenceTransformer('intfloat/multilingual-e5-small').encode(sentences)
     return jsonify({"embeddings": embeddings.tolist()})

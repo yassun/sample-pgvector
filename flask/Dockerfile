@@ -1,6 +1,6 @@
 FROM python:3.10
 WORKDIR /app
-ENV FLASK_APP=app
+ENV PYTHONUNBUFFERED=1
 COPY ./requirements.txt ./
 COPY ./app.py ./
 

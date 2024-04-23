@@ -24,11 +24,16 @@ services:
     build:
       context: ./flask/
       dockerfile: Dockerfile
+    command: flask --debug run --host=0.0.0.0
+    volumes:
+      - ./flask:/usr/src/app
     ports:
       - "5000:5000"
     container_name: flask
-    volumes:
-      - ./flask:/usr/src/app
-    command: flask run --host=0.0.0.0
+    environment:
+      FLASK_DEBUG: "on"
+      FLASK_APP: ./app.py
+      FLASK_ENV: development
+      ENV PYTHONUNBUFFERED: 1
 volumes:
   postgres_volume:
